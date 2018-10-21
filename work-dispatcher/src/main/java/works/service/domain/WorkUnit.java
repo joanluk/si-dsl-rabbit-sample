@@ -2,7 +2,9 @@ package works.service.domain;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
+@Data
 public class WorkUnit {
 
     private String id;
@@ -24,25 +26,6 @@ public class WorkUnit {
         this.throwException = throwException;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setDefinition(String definition) {
-        this.definition = definition;
-    }
-
-    public void setThrowException(boolean throwException) {
-        this.throwException = throwException;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getDefinition() {
-        return definition;
-    }
 
     @JsonProperty("throw_exception")
     public boolean isThrowException() {
