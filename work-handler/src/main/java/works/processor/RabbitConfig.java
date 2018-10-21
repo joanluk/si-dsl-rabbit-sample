@@ -1,12 +1,10 @@
 package works.processor;
 
-import org.aopalliance.aop.Advice;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.config.RetryInterceptorBuilder;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.retry.RejectAndDontRequeueRecoverer;
-import org.springframework.amqp.rabbit.retry.RepublishMessageRecoverer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +19,7 @@ public class RabbitConfig {
     @Bean
     Exchange worksExchange() {
         return ExchangeBuilder.topicExchange("work.exchange")
-                .durable()
+                .durable(true)
                 .build();
     }
 
@@ -45,7 +43,7 @@ public class RabbitConfig {
     Exchange worksDlExchange() {
         return ExchangeBuilder
                 .topicExchange("work.exchange.dl")
-                .durable()
+                .durable(true)
                 .build();
     }
 
